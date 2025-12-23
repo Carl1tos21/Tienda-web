@@ -1,4 +1,3 @@
-// (Mantener el código de app.js anterior)
 document.addEventListener('DOMContentLoaded', () => {
     const editorPanel = document.getElementById('editor-panel');
     const toggleButton = document.getElementById('toggle-editor');
@@ -10,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButton.addEventListener('click', () => {
         editorPanel.classList.toggle('hidden');
         if (editorPanel.classList.contains('hidden')) {
-            toggleButton.innerHTML = '<i class="fas fa-edit"></i> Modo Edición';
+            toggleButton.textContent = 'Modo Edición';
         } else {
-            toggleButton.innerHTML = '<i class="fas fa-times"></i> Ocultar Editor';
+            toggleButton.textContent = 'Ocultar Editor';
         }
     });
 
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpiar formulario después de guardar
         productForm.reset();
         editorPanel.classList.add('hidden'); // Ocultar después de guardar
-        toggleButton.innerHTML = '<i class="fas fa-edit"></i> Modo Edición';
+        toggleButton.textContent = 'Modo Edición';
     });
 
     // 2. Manejar el clic en el botón 'Editar' de un producto
@@ -60,16 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('nombre').value = nombre;
             document.getElementById('precio').value = parseFloat(precio);
             document.getElementById('descripcion').value = desc;
-            document.getElementById('save-button').innerHTML = '<i class="fas fa-sync-alt"></i> Actualizar Producto';
+            document.getElementById('save-button').textContent = 'Actualizar Producto';
 
             // Mostrar el panel de edición
             editorPanel.classList.remove('hidden');
-            toggleButton.innerHTML = '<i class="fas fa-times"></i> Ocultar Editor';
+            toggleButton.textContent = 'Ocultar Editor';
             window.scrollTo({ top: 0, behavior: 'smooth' }); // Mover la vista al formulario
         });
     });
 
     // Futuro: Aquí se agrega el código para LEER los productos de Firebase/Supabase.
 });
-
 

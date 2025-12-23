@@ -2,59 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda El Mojito - Gestión de Productos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <h1>TIENDA EL MOJITO</h1>
-        <button id="toggle-editor" class="control-btn">Modo Edición</button>
-    </header>
+    <div class="container">
+        <h1>🛒 Lista de Productos</h1>
 
-    <div id="main-content-wrapper">
-        
-        <section id="editor-panel" class="editor-container hidden">
-            <h2>Panel de Gestión de Productos</h2>
-            <form id="product-form">
-                <input type="hidden" id="product-id">
-                
-                <div class="input-row">
-                    <label for="nombre">Nombre del Producto:</label>
-                    <input type="text" id="nombre" required>
-                </div>
+        <div id="product-list"></div>
 
-                <div class="input-row">
-                    <label for="precio">Precio:</label>
-                    <input type="number" id="precio" step="0.01" required>
-                </div>
-
-                <div class="input-row">
-                    <label for="descripcion">Descripción:</label>
-                    <input type="text" id="descripcion"> </div>
-
-                <button type="submit" id="save-button" class="action-btn">Guardar Producto</button>
-            </form>
-        </section>
-
-        <main id="productos-list-section">
-            <h2 class="section-title">Lista de Productos</h2>
-            <div id="productos-container">
-                <div class="producto-card" data-id="001">
-                    <h3 class="producto-nombre">Zapatos de Cuero Elegantes</h3>
-                    <p class="producto-precio">$ 85.00</p>
-                    <p class="producto-desc">Calzado de alta calidad para ocasiones especiales.</p>
-                    <button class="edit-btn">Editar Precio</button>
-                </div>
-                </div>
-        </main>
-        
+        <h2>➕ Agregar producto</h2>
+        <input type="text" id="name" placeholder="Nombre del producto">
+        <input type="number" id="price" placeholder="Precio">
+        <button onclick="addProduct()">Agregar</button>
     </div>
 
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
+
 
 

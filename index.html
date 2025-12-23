@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🛒 Lista de Productos</h1>
+
+        <div id="product-list"></div>
+
+        <h2>➕ Agregar producto</h2>
+        <input type="text" id="name" placeholder="Nombre del producto">
+        <input type="number" id="price" placeholder="Precio">
+        <button onclick="addProduct()">Agregar</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        // 👇 TU CONFIGURACIÓN DE FIREBASE 👇
+        apiKey: "AIzaSyAVBtBY7QgBriUHOJ3B6Tk9rOhvg8ebBSg",
+        authDomain: "tienda-web-3466d.firebaseapp.com",
+        projectId: "tienda-web-3466d",
+        storageBucket: "tienda-web-3466d.firebasestorage.app",
+        messagingSenderId: "665844909714",
+        appId: "1:665844909714:web:b6b6bb8dd47a8ce586484b"
+        // 👆 FIN DE TU CONFIGURACIÓN 👆
+      };
+
+      // Inicializar Firebase y Firestore
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

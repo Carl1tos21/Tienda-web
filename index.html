@@ -4,60 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda El Mojito - Gestión de Productos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <h1>TIENDA EL MOJITO</h1>
-            <span class="lime-icon" title="Mojito Icono">🌿</span>
-        </div>
-        <button id="toggle-editor" class="control-btn">
-            <i class="fas fa-edit"></i> Modo Edición
-        </button>
+        <h1>TIENDA EL MOJITO</h1>
+        <button id="toggle-editor" class="control-btn">Modo Edición</button>
     </header>
 
-    <section id="editor-panel" class="editor-container hidden">
-        <h2>🍹 Gestión Rápida de Productos</h2>
-        <form id="product-form">
-            <input type="hidden" id="product-id">
-            
-            <div class="input-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" required placeholder="Ej: Camisa de Lino">
-            </div>
+    <div id="main-content-wrapper">
+        
+        <section id="editor-panel" class="editor-container hidden">
+            <h2>Panel de Gestión de Productos</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="input-row">
+                    <label for="nombre">Nombre del Producto:</label>
+                    <input type="text" id="nombre" required>
+                </div>
 
-            <div class="input-group">
-                <label for="precio">Precio ($)</label>
-                <input type="number" id="precio" step="0.01" required placeholder="Ej: 35.50">
-            </div>
+                <div class="input-row">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" step="0.01" required>
+                </div>
 
-            <div class="input-group">
-                <label for="descripcion">Descripción</label>
-                <textarea id="descripcion" placeholder="Breve descripción del producto"></textarea>
-            </div>
+                <div class="input-row">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion"> </div>
 
-            <button type="submit" id="save-button" class="action-btn">
-                <i class="fas fa-save"></i> Guardar Producto
-            </button>
-        </form>
-    </section>
+                <button type="submit" id="save-button" class="action-btn">Guardar Producto</button>
+            </form>
+        </section>
 
-    <main id="productos-container">
-        <div class="producto-card" data-id="001">
-            <h3 class="producto-nombre">Zapatos de Cuero Elegantes</h3>
-            <p class="producto-desc">Calzado de alta calidad para ocasiones especiales.</p>
-            <p class="producto-precio">$ 85.00</p>
-            <button class="edit-btn">
-                <i class="fas fa-pen"></i> Editar Precio
-            </button>
-        </div>
+        <main id="productos-list-section">
+            <h2 class="section-title">Lista de Productos</h2>
+            <div id="productos-container">
+                <div class="producto-card" data-id="001">
+                    <h3 class="producto-nombre">Zapatos de Cuero Elegantes</h3>
+                    <p class="producto-precio">$ 85.00</p>
+                    <p class="producto-desc">Calzado de alta calidad para ocasiones especiales.</p>
+                    <button class="edit-btn">Editar Precio</button>
+                </div>
+                </div>
         </main>
+        
+    </div>
 
     <script src="app.js"></script>
 </body>
 </html>
+
 

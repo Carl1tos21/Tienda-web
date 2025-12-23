@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tienda</title>
+    <title>Tienda de Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,14 +14,10 @@
 
         <h2>➕ Agregar producto</h2>
         <input type="text" id="name" placeholder="Nombre del producto">
-        <input type="number" id="price" placeholder="Precio">
-        <button onclick="addProduct()">Agregar</button>
+        <input type="number" id="price" placeholder="Precio (Bs.)" min="0" step="0.01">
+        <button onclick="addProduct()">Agregar Producto</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-

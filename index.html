@@ -2,41 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tienda</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda El Mojito - Acceso Directo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>🛒 Lista de Productos</h1>
+    <header>
+        <h1>TIENDA EL MOJITO</h1> 
+        <button id="toggle-editor">Modo Edición</button>
+    </header>
 
-        <div id="product-list"></div>
+    <section id="editor-panel" class="hidden">
+        <h2>Panel de Gestión de Productos</h2>
+        <form id="product-form">
+            <input type="hidden" id="product-id">
+            
+            <label for="nombre">Nombre del Producto:</label>
+            <input type="text" id="nombre" required>
 
-        <h2>➕ Agregar producto</h2>
-        <input type="text" id="name" placeholder="Nombre del producto">
-        <input type="number" id="price" placeholder="Precio">
-        <button onclick="addProduct()">Agregar</button>
-    </div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" step="0.01" required>
 
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <script>
-      const firebaseConfig = {
-        // 👇 TU CONFIGURACIÓN DE FIREBASE 👇
-        apiKey: "AIzaSyAVBtBY7QgBriUHOJ3B6Tk9rOhvg8ebBSg",
-        authDomain: "tienda-web-3466d.firebaseapp.com",
-        projectId: "tienda-web-3466d",
-        storageBucket: "tienda-web-3466d.firebasestorage.app",
-        messagingSenderId: "665844909714",
-        appId: "1:665844909714:web:b6b6bb8dd47a8ce586484b"
-        // 👆 FIN DE TU CONFIGURACIÓN 👆
-      };
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion"></textarea>
 
-      // Inicializar Firebase y Firestore
-      firebase.initializeApp(firebaseConfig);
-      const db = firebase.firestore();
-    </script>
+            <button type="submit" id="save-button">Guardar Producto</button>
+        </form>
+    </section>
 
-    <script src="script.js"></script>
+    <main id="productos-container">
+        <div class="producto-card" data-id="001">
+            <h3 class="producto-nombre">Zapatos de Cuero Elegantes</h3>
+            <p class="producto-precio">$ 85.00</p>
+            <p class="producto-desc">Calzado de alta calidad para ocasiones especiales.</p>
+            <button class="edit-btn">Editar Precio</button>
+        </div>
+        </main>
+
+    <script src="app.js"></script>
 </body>
 </html>

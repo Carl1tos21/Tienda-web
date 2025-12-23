@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tienda de Productos</title>
+    <title>Tienda de Productos - Firebase</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,6 +18,28 @@
         <button onclick="addProduct()">Agregar Producto</button>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // =========================================================================
+        // !!! COPIA Y PEGA AQUÍ EL OBJETO firebaseConfig DE TU CONSOLA DE FIREBASE !!!
+        // =========================================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_XXXXXXXXXXXXXXXXXXX",
+            authDomain: "tu-proyecto-1234.firebaseapp.com",
+            projectId: "tu-proyecto-1234",
+            storageBucket: "tu-proyecto-1234.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef1234567890"
+        };
+
+        // Inicializar Firebase y Firestore
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
+

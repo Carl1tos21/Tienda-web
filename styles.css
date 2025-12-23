@@ -1,207 +1,192 @@
-/* PALETA DE COLORES */
+/* PALETA DE COLORES Y FUENTES */
 :root {
-    --color-primary: #388e3c; /* Verde Menta Oscuro (como la menta) */
-    --color-secondary: #ffc107; /* Amarillo Lima (como el limón) */
-    --color-background: #e8f5e9; /* Fondo claro menta/lima */
-    --color-text: #263238; /* Texto oscuro */
-    --color-white: #ffffff;
-    --color-shadow: rgba(0, 0, 0, 0.08);
+    /* Color de fondo de los paneles de gestión */
+    --color-panel-bg: #d0e7d3; 
+    /* Color de fondo de la aplicación */
+    --color-body-bg: #f4f4f9; 
+    /* Verde para el botón de guardar */
+    --color-save-btn: #4caf50; 
+    /* Fuente para títulos (Playfair Display) */
+    --font-title: 'Playfair Display', serif;
+    /* Fuente para cuerpo de texto (Roboto) */
+    --font-body: 'Roboto', sans-serif; 
 }
 
-/* RESET BÁSICO */
+/* RESET Y ESTILO BÁSICO */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
-    background-color: var(--color-background);
-    color: var(--color-text);
-    line-height: 1.6;
+    background-color: var(--color-body-bg);
+    color: #333;
 }
 
-/* ENCABEZADO */
 header {
-    background-color: var(--color-white);
+    background-color: white;
     padding: 15px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Alineación a la izquierda */
     align-items: center;
-    box-shadow: 0 2px 10px var(--color-shadow);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
+    gap: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
     margin: 0;
-    font-weight: 800;
-    color: var(--color-primary);
-    font-size: 1.8rem;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: #1a1a1a;
 }
 
-.lime-icon {
-    font-size: 1.5rem;
-    margin-left: 10px;
-}
-
-/* BOTONES GLOBALES */
-.control-btn, .action-btn, .edit-btn {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border: none;
-    padding: 10px 18px;
+/* BOTONES ESTILO SIMPLE */
+.control-btn, .edit-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
     cursor: pointer;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.1s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
-.control-btn:hover, .action-btn:hover, .edit-btn:hover {
-    background-color: #2e7d32;
-    transform: translateY(-1px);
+.control-btn:hover, .edit-btn:hover {
+    background-color: #e0e0e0;
 }
 
-/* PANEL DE EDICIÓN */
-.editor-container {
-    background-color: var(--color-white);
-    padding: 30px;
+/* ESTRUCTURA PRINCIPAL DE CONTENIDO (División Izquierda/Derecha) */
+#main-content-wrapper {
+    display: grid;
+    /* Divide la vista en dos columnas: 1 parte para lista, 1 parte para editor */
+    grid-template-columns: 1fr 1fr; 
+    max-width: 1400px;
     margin: 20px auto;
-    max-width: 800px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px var(--color-shadow);
-    border: 1px solid #c8e6c9;
+    gap: 20px;
+}
+
+/* SECCIÓN IZQUIERDA: LISTA DE PRODUCTOS */
+#productos-list-section {
+    padding: 20px;
+    /* Hacemos que la lista de productos tenga el fondo blanco para contrastar */
+    background-color: white; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#productos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.producto-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.producto-nombre {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.producto-precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e91e63; /* Color destacado para el precio */
+    margin-top: 0;
+}
+
+.producto-desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+/* SECCIÓN DERECHA: PANEL DE EDICIÓN */
+.editor-container {
+    background-color: var(--color-panel-bg); /* Fondo verde menta de la imagen */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: fit-content; /* Se ajusta al contenido */
 }
 
 .editor-container h2 {
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-secondary);
-    padding-bottom: 10px;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    text-align: center;
     margin-top: 0;
-    font-weight: 600;
+    margin-bottom: 25px;
 }
 
 .editor-container.hidden {
     display: none;
 }
 
-/* FORMULARIO */
+/* FORMULARIO DE EDICIÓN */
 #product-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.input-group {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-.input-group:last-of-type {
-    grid-column: 1 / -1; /* Descripción ocupa todo el ancho */
-}
-
-label {
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-    padding: 12px;
-    border: 1px solid #c8e6c9;
-    border-radius: 6px;
-    transition: border-color 0.3s;
-    font-size: 1rem;
-}
-
-input:focus, textarea:focus {
-    border-color: var(--color-primary);
-    outline: none;
-    box-shadow: 0 0 5px rgba(56, 142, 60, 0.3);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-#save-button {
-    grid-column: 1 / -1;
-    margin-top: 10px;
-    background-color: #2196f3; /* Azul para guardar */
-}
-#save-button:hover {
-    background-color: #1976d2;
-}
-
-/* CONTENEDOR DE PRODUCTOS (GRID) */
-#productos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 30px 40px;
-    max-width: 1400px;
-    margin: auto;
-}
-
-.producto-card {
-    background-color: var(--color-white);
-    border-radius: 10px;
-    box-shadow: 0 6px 20px var(--color-shadow);
-    padding: 25px;
+.input-row {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
 
-.producto-nombre {
-    color: var(--color-text);
-    margin-top: 0;
-    font-size: 1.5rem;
-    font-weight: 800;
+.input-row label {
+    font-weight: bold;
+    font-size: 1rem;
+    min-width: 150px; /* Asegura que la etiqueta tenga espacio */
 }
 
-.producto-desc {
-    font-size: 0.95rem;
-    color: #546e7a;
+input[type="text"],
+input[type="number"] {
     flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1rem;
 }
 
-.producto-precio {
-    font-size: 2em;
-    font-weight: 800;
-    color: var(--color-secondary);
-    margin: 10px 0 15px 0;
+/* Botón de Guardar Producto */
+.action-btn {
+    background-color: var(--color-save-btn);
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-.edit-btn {
-    align-self: flex-start;
-    background-color: #ffa726; /* Naranja más suave para editar */
-}
-.edit-btn:hover {
-    background-color: #fb8c00;
+.action-btn:hover {
+    background-color: #43a047;
 }
 
-/* MEDIA QUERIES para responsividad */
-@media (max-width: 600px) {
-    header {
-        padding: 15px 20px;
+/* MEDIA QUERIES para cuando el editor está visible */
+@media (max-width: 900px) {
+    #main-content-wrapper {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        padding: 0 20px;
     }
-    header h1 {
-        font-size: 1.5rem;
-    }
-    #productos-container {
-        padding: 20px;
-        gap: 20px;
-    }
-    #product-form {
-        grid-template-columns: 1fr; /* Una columna en móviles */
+    #editor-panel {
+        /* Para que el panel de edición aparezca primero si no está oculto */
+        order: -1; 
     }
 }
 

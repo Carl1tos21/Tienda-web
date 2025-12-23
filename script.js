@@ -22,16 +22,22 @@ function loadProducts() {
     }
 }
 
-// --- Funciones Existentes Modificadas ---
+// --- Funciones de la Aplicación ---
 
 function renderProducts() {
     const list = document.getElementById("product-list");
     list.innerHTML = "";
     
+    // Si no hay productos, mostrar un mensaje
+    if (products.length === 0) {
+        list.innerHTML = '<p style="text-align: center; color: #777;">Aún no hay productos añadidos.</p>';
+        return; // Salir de la función
+    }
 
     products.forEach((product, index) => {
-        // Asegúrate de que el precio sea tratado como número (aunque se almacene como texto)
-        const price = parseFloat(product.price).toFixed(2); 
+        // Formatea el precio a dos decimales de manera segura
+        const price = parseFloat(product.price).toFixed(2);
+        
         list.innerHTML += `
             <div class="product">
                 <span>${product.name} - Bs. ${price}</span>
@@ -43,36 +49,36 @@ function renderProducts() {
 
 function addProduct() {
     const name = document.getElementById("name").value.trim();
-    // Obtener el valor y convertirlo a un número con 2 decimales
-    const priceValue = parseFloat(document.getElementById("price").value);
+    const priceInput = document.getElementById("price").value;
+    const priceValue = parseFloat(priceInput);
 
+    // Validación de campos
     if (name === "" || isNaN(priceValue) || priceValue <= 0) {
-        alert("Por favor, completa un nombre válido y un precio mayor a cero.");
+        alert("Por favor, ingresa un nombre válido y un precio mayor a cero.");
         return;
     }
     
     // Almacena el precio como cadena con 2 decimales para consistencia
-    const price = priceValue.toFixed(2); 
+    const price = priceValue.toFixed(2);
 
     products.push({ name, price });
     
     // 1. Renderiza la lista actualizada
     renderProducts();
     
-    // 2. ¡Guarda la lista actualizada!
+    // 2. Guarda la lista actualizada para la persistencia
     saveProducts();
 
+    // Limpiar los campos de entrada
     document.getElementById("name").value = "";
     document.getElementById("price").value = "";
 }
 
 function editPrice(index) {
-    // Usamos el precio actual como valor por defecto en el prompt
     const currentPrice = products[index].price;
-    const newPricePrompt = prompt("Nuevo precio:", currentPrice);
+    const newPricePrompt = prompt("Ingresa el nuevo precio (Bs.):", currentPrice);
     
     if (newPricePrompt !== null) {
-        // Validamos la entrada
         const newPriceValue = parseFloat(newPricePrompt);
         
         if (!isNaN(newPriceValue) && newPriceValue >= 0) {
@@ -82,7 +88,7 @@ function editPrice(index) {
             // 1. Renderiza la lista actualizada
             renderProducts();
             
-            // 2. ¡Guarda la lista actualizada!
+            // 2. Guarda la lista actualizada para la persistencia
             saveProducts();
         } else {
             alert("Precio no válido. Debe ser un número positivo.");
@@ -91,13 +97,16 @@ function editPrice(index) {
 }
 
 
-// --- Inicialización (Llamada al cargar la página) ---
+// --- Inicialización (Ejecución al cargar la página) ---
 
-// 1. Carga los datos guardados (si existen)
-loadProducts();
+// Este evento asegura que el código se ejecuta solo cuando el DOM está listo,
+// garantizando que 'product-list' y otros elementos existan antes de ser manipulados.
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Carga los datos guardados (si existen)
+    loadProducts();
 
-// 2. Muestra los productos cargados
-renderProducts();
-
+    // 2. Muestra los productos cargados
+    renderProducts();
+});
 
 

@@ -1,193 +1,49 @@
-/* PALETA DE COLORES Y FUENTES */
-:root {
-    /* Color de fondo de los paneles de gestión */
-    --color-panel-bg: #d0e7d3; 
-    /* Color de fondo de la aplicación */
-    --color-body-bg: #f4f4f9; 
-    /* Verde para el botón de guardar */
-    --color-save-btn: #4caf50; 
-    /* Fuente para títulos (Playfair Display) */
-    --font-title: 'Playfair Display', serif;
-    /* Fuente para cuerpo de texto (Roboto) */
-    --font-body: 'Roboto', sans-serif; 
-}
-
-/* RESET Y ESTILO BÁSICO */
 body {
-    font-family: var(--font-body);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #74ebd5, #9face6);
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: var(--color-body-bg);
-    color: #333;
 }
 
-header {
-    background-color: white;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: flex-start; /* Alineación a la izquierda */
-    align-items: center;
-    gap: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    margin: 0;
-    font-family: var(--font-title);
-    font-size: 2rem;
-    color: #1a1a1a;
-}
-
-/* BOTONES ESTILO SIMPLE */
-.control-btn, .edit-btn {
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.control-btn:hover, .edit-btn:hover {
-    background-color: #e0e0e0;
-}
-
-/* ESTRUCTURA PRINCIPAL DE CONTENIDO (División Izquierda/Derecha) */
-#main-content-wrapper {
-    display: grid;
-    /* Divide la vista en dos columnas: 1 parte para lista, 1 parte para editor */
-    grid-template-columns: 1fr 1fr; 
-    max-width: 1400px;
-    margin: 20px auto;
-    gap: 20px;
-}
-
-/* SECCIÓN IZQUIERDA: LISTA DE PRODUCTOS */
-#productos-list-section {
+.container {
+    background: white;
+    width: 400px;
+    margin: 40px auto;
     padding: 20px;
-    /* Hacemos que la lista de productos tenga el fondo blanco para contrastar */
-    background-color: white; 
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.section-title {
-    font-family: var(--font-title);
-    font-size: 1.8rem;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-#productos-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.producto-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 6px;
-    background-color: #fff;
-}
-
-.producto-nombre {
-    font-family: var(--font-title);
-    font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.producto-precio {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #e91e63; /* Color destacado para el precio */
-    margin-top: 0;
-}
-
-.producto-desc {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-
-/* SECCIÓN DERECHA: PANEL DE EDICIÓN */
-.editor-container {
-    background-color: var(--color-panel-bg); /* Fondo verde menta de la imagen */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    height: fit-content; /* Se ajusta al contenido */
-}
-
-.editor-container h2 {
-    font-family: var(--font-title);
-    font-size: 2rem;
+h1, h2 {
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 25px;
 }
 
-.editor-container.hidden {
-    display: none;
-}
-
-/* FORMULARIO DE EDICIÓN */
-#product-form {
+.product {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.input-row {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
-.input-row label {
-    font-weight: bold;
-    font-size: 1rem;
-    min-width: 150px; /* Asegura que la etiqueta tenga espacio */
-}
-
-input[type="text"],
-input[type="number"] {
-    flex-grow: 1;
+input {
+    width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 1rem;
+    margin: 5px 0;
 }
 
-/* Botón de Guardar Producto */
-.action-btn {
-    background-color: var(--color-save-btn);
-    color: white;
-    border: none;
+button {
+    width: 100%;
     padding: 10px;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.action-btn:hover {
-    background-color: #43a047;
+button:hover {
+    background: #45a049;
 }
 
-/* MEDIA QUERIES para cuando el editor está visible */
-@media (max-width: 900px) {
-    #main-content-wrapper {
-        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
-        padding: 0 20px;
-    }
-    #editor-panel {
-        /* Para que el panel de edición aparezca primero si no está oculto */
-        order: -1; 
-    }
-}
 
 
